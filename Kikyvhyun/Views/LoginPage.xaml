@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Kikyvhyun.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Kikyvhyun.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="800"
+    Width="600">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Name="loginTxtBlockInfo" Text="Welcome to kikyvhyun" FontSize="32" FontFamily="Georgia" TextAlignment="Center"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7"/>
+        
+        <TextBlock Name="loginTxtBlockLogin" Text="Login :" FontSize="26" FontFamily="Georgia" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBox Name="loginTxtBoxLogin" PlaceholderText="login" FontSize="26" FontFamily="Georgia" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="5"/>
+
+        <TextBlock Name="loginTxtBlockPassword" Text="Password :" FontSize="26" FontFamily="Georgia" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2"/>
+        <PasswordBox Name="loginPasswordBoxPassword" PlaceholderText="password" FontSize="26" FontFamily="Georgia" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="5"/>
+        
+        <Button Name="loginBtnLogin" Content="Login" FontSize="32" FontFamily="Georgia" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="7" Grid.ColumnSpan="5" Tapped="loginBtnLogin_Tapped"/>
+        <Button Name="loginBtnSignUp" Content="Sign Up" FontSize="32" FontFamily="Georgia" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="9" Grid.ColumnSpan="5" Tapped="loginBtnSignUp_Tapped"/>
+    </Grid>
+
+</Page>
