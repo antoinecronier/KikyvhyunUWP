@@ -82,6 +82,7 @@ namespace Kikyvhyun.Utils.Camera
                 await mediaCapture.InitializeAsync();
             }
         }
+
         #region Pick
         public async Task<SoftwareBitmap> TakePick()
         {
@@ -170,6 +171,7 @@ namespace Kikyvhyun.Utils.Camera
         private async void MediaCapture_RecordLimitationExceeded(MediaCapture sender)
         {
             await mediaRecording.StopAsync();
+            await mediaRecording.FinishAsync();
             OnVideoEndEvent(new EventArgs());
         }
         #endregion
