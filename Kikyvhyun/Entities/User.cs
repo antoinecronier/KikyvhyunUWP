@@ -1,5 +1,8 @@
 ﻿using Kikyvhyun.Entities.Base;
+using Kikyvhyun.Entities.Relations;
+using SQLiteNetExtensions.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace Kikyvhyun.Entities
 {
@@ -21,9 +24,22 @@ namespace Kikyvhyun.Entities
         private String userNickname;
         private String userLogin;
         private String userPassword;
+        private List<Meeting> meetings;
+        private List<People> people;
         #endregion
 
         #region Properties
+        [ManyToMany(typeof(UserMeeting))]
+        public List<Meeting> Meetings
+        {
+            get { return meetings; }
+            set
+            {
+                meetings = value;
+                OnPropertyChanged("Meetings");
+            }
+        }
+
         public String UserPassword
         {
             get { return userPassword; }
@@ -73,12 +89,24 @@ namespace Kikyvhyun.Entities
                 OnPropertyChanged("UserFirstName");
             }
         }
+
+        [OneToMany]
+        public List<People> People
+        {
+            get { return people; }
+            set
+            {
+                people = value;
+                OnPropertyChanged("People");
+            }
+        }
         #endregion
 
         #region Constructors
         public User()
         {
-
+            meetings = new List<Meeting>();
+            people = new List<Entities.People>();
         }
         #endregion
 

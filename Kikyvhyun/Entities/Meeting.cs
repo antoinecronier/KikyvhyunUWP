@@ -1,4 +1,5 @@
 ﻿using Kikyvhyun.Entities.Base;
+using Kikyvhyun.Entities.Relations;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,22 @@ namespace Kikyvhyun.Entities
         private List<User> users;
         private List<Category> categories;
         private Address address;
+        private int addressId;
         #endregion
 
         #region Properties
-        [OneToMany]
+        [ForeignKey(typeof(Address))]
+        public int AddressId
+        {
+            get { return addressId; }
+            set
+            {
+                addressId = value;
+                OnPropertyChanged("AddressId");
+            }
+        }
+
+        [ManyToMany(typeof(CategoryMeeting))]
         public List<Category> Categories
         {
             get { return categories; }
@@ -42,7 +55,7 @@ namespace Kikyvhyun.Entities
             }
         }
 
-        [ManyToMany(typeof(User))]
+        [ManyToMany(typeof(UserMeeting))]
         public List<User> Users
         {
             get { return users; }
@@ -53,7 +66,7 @@ namespace Kikyvhyun.Entities
             }
         }
 
-        [ManyToMany(typeof(People))]
+        [ManyToMany(typeof(PeopleMeeting))]
         public List<People> People
         {
             get { return people; }
@@ -94,6 +107,7 @@ namespace Kikyvhyun.Entities
             }
         }
 
+        [ManyToOne]
         public Address Address
         {
             get { return address; }
@@ -108,7 +122,9 @@ namespace Kikyvhyun.Entities
         #region Constructors
         public Meeting()
         {
-
+            people = new List<Entities.People>();
+            users = new List<User>();
+            categories = new List<Category>();
         }
         #endregion
 

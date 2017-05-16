@@ -1,4 +1,5 @@
 ﻿using Kikyvhyun.Entities.Base;
+using Kikyvhyun.Entities.Relations;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,15 @@ namespace Kikyvhyun.Entities
         #endregion
 
         #region Attributs
-        private Boolean hasAccept;
+        private Boolean? hasAccept;
         private DateTime changeTime;
         private User user;
         private List<Meeting> meetings;
+        private int userId;
         #endregion
 
         #region Properties
-        [ManyToMany(typeof(Meeting))]
+        [ManyToMany(typeof(PeopleMeeting))]
         public List<Meeting> Meetings
         {
             get { return meetings; }
@@ -36,6 +38,7 @@ namespace Kikyvhyun.Entities
             }
         }
 
+        [ManyToOne]
         public User User
         {
             get { return user; }
@@ -56,7 +59,7 @@ namespace Kikyvhyun.Entities
             }
         }
 
-        public Boolean HasAccept
+        public Boolean? HasAccept
         {
             get { return hasAccept; }
             set
@@ -65,12 +68,19 @@ namespace Kikyvhyun.Entities
                 OnPropertyChanged("HasAccept");
             }
         }
+
+        [ForeignKey(typeof(User))]
+        public int UserId
+        {
+            get { return userId; }
+            set { userId = value; }
+        }
         #endregion
 
         #region Constructors
         public People()
         {
-
+            meetings = new List<Meeting>();
         }
         #endregion
 

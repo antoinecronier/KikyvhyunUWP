@@ -1,5 +1,8 @@
 ﻿using Kikyvhyun.Entities.Base;
+using Kikyvhyun.Entities.Relations;
+using SQLiteNetExtensions.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace Kikyvhyun.Entities
 {
@@ -19,9 +22,21 @@ namespace Kikyvhyun.Entities
         private String addressName;
         private String addressStreet;
         private String addressCity;
+        private List<Meeting> meetings;
         #endregion
 
         #region Properties
+        [OneToMany]
+        public List<Meeting> Meetings
+        {
+            get { return meetings; }
+            set
+            {
+                meetings = value;
+                OnPropertyChanged("Meeting");
+            }
+        }
+
         public String AddressCity
         {
             get { return addressCity; }
