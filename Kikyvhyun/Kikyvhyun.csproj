@@ -112,6 +112,7 @@
     <Compile Include="UserControls\UserUserControl.xaml.cs">
       <DependentUpon>UserUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Camera\CameraManager.cs" />
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

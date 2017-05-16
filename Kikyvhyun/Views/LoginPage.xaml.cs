@@ -1,5 +1,6 @@
 ﻿using Kikyvhyun.Database;
 using Kikyvhyun.Entities;
+using Kikyvhyun.Utils.Camera;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,16 +28,23 @@ namespace Kikyvhyun.Views
         public LoginPage()
         {
             this.InitializeComponent();
+            CameraManager.Instance.SetCaptureSource(this.captureView);
         }
 
-        private void loginBtnLogin_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void loginBtnLogin_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(MeetingPage));
+            var photo = await CameraManager.Instance.TakePick();
+            var source = await CameraManager.Instance.ToBitmapSource(photo);
+            this.image.Source = source;
+
+            CameraManager.Instance.TakeVideo();
+            //(Window.Current.Content as Frame).Navigate(typeof(MeetingPage));
         }
 
         private void loginBtnSignUp_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(SignUpPage));
+            CameraManager.Instance.StopVideo();
+            //(Window.Current.Content as Frame).Navigate(typeof(SignUpPage));
         }
     }
 }

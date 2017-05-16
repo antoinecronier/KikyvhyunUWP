@@ -34,7 +34,10 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
+        <Image x:Name="image" Grid.ColumnSpan="10" Grid.RowSpan="5"/>
+        <CaptureElement x:Name="captureView" Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="5"/>
+        
+        
         <TextBlock Name="loginTxtBlockInfo" Text="Welcome to kikyvhyun" FontSize="32" FontFamily="Georgia" TextAlignment="Center"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7"/>
         
         <TextBlock Name="loginTxtBlockLogin" Text="Login :" FontSize="26" FontFamily="Georgia" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"/>
